@@ -59,7 +59,7 @@ void testFour() {
     printf("sum %d\n",sum);
 }
 
-int testFive(double sum, int count) {
+double testFive(double sum, int count) {
     count ++;
     sum = sqrt(sum+count);
     if (count >= 100) {
@@ -70,12 +70,31 @@ int testFive(double sum, int count) {
     }
 }
 
+double testSix(double sum, int count, double factor) {
+    if (count == 0) {
+        sum = 2;
+        factor = 0.0;
+    }
+    if (count >= 1) {
+        factor = sqrt(factor+2);
+        sum = sum * (2 / factor);
+    }
+    count ++;
+    if (count >= 100) {
+        printf("sum is %.2f\n",sum);
+        return sum;
+    } else {
+        return testSix(sum, count, factor);
+    }
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
 //    testOne();
 //    testTwo();
 //    testThree();
 //    testFour();
-    testFive(0.0, 0);
+    
+    testSix(0.0, 0, 0);
     return 0;
 }
