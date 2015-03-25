@@ -88,6 +88,67 @@ double testSix(double sum, int count, double factor) {
     }
 }
 
+double testSeven(double sum, int count, int factor, double lastSum) {
+    lastSum = lastSum+(factor/(2*factor+1));
+    printf("last sum %f\n",lastSum);
+    sum = factor / (2 * factor + 1) + sum + lastSum;
+    factor++;
+    if (count >= 4) {
+        printf("sum %f\n",sum);
+        return sum;
+    } else {
+        count++;
+        return testSeven(sum, count, factor, lastSum);
+    }
+}
+
+void testEight() {
+    int number = 99;
+    int arr[10];
+    for (int i = 0; i <= 9; i++) {
+        arr[i] = i*i;
+    }
+    for (int i = 1; i <= 9; i++) {
+        int ti = arr[i];
+        for (int j = 0; j <= 9; j++) {
+            int tj = arr[j];
+            for (int k = 0; k <= 9; k++) {
+                number++;
+                if (number % 11 == 0) {
+                    int temp = number / 11;
+                    if (temp == arr[k]+ti+tj) {
+                        printf("number %d\n",number);
+                    }
+                }
+            }
+        }
+    }
+}
+
+void testNine() {
+    int number = 999;
+    int arr[10];
+    for (int i = 0; i <= 9; i++) {
+        arr[i] = i*i*i*i;
+    }
+    
+    for (int i = 1; i <= 9; i++) {
+        int ti = arr[i];
+        for (int j = 0; j <= 9; j++) {
+            int tj = arr[j];
+            for (int k = 0; k <= 9; k++) {
+                int tk = arr[k];
+                for (int l = 0; l <= 9; l++) {
+                    number++;
+                    if (number == ti+tj+tk+arr[l]) {
+                        printf("number %d\n",number);
+                    }
+                }
+            }
+        }
+    }
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
 //    testOne();
@@ -95,6 +156,9 @@ int main(int argc, const char * argv[]) {
 //    testThree();
 //    testFour();
     
-    testSix(0.0, 0, 0);
+//    testSix(0.0, 0, 0);
+//    testSeven(0, 0, 0, 0);
+//    testEight();
+    testNine();
     return 0;
 }
